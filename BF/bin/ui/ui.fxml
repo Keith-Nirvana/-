@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+   <children>
+      <Pane fx:id="mainPane" prefHeight="584.0" prefWidth="840.0">
+         <children>
+            <MenuBar prefHeight="36.0" prefWidth="840.0">
+              <menus>
+                <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="miNew" mnemonicParsing="false" onAction="#onNewClicked" text="New" />
+                    <MenuItem fx:id="miOpen" mnemonicParsing="false" onAction="#onOpenClicked" text="Open" />
+                    <MenuItem fx:id="miSave" mnemonicParsing="false" onAction="#onSaveClicked" text="Save" />
+                        <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu fx:id="menuRun" mnemonicParsing="false" text="Run">
+                     <items>
+                        <MenuItem fx:id="miRun" mnemonicParsing="false" onAction="#onRunClicked" text="Run" />
+                     </items>
+                  </Menu>
+                <Menu fx:id="menuVersion" mnemonicParsing="false" text="Version">
+                     <items>
+                        <MenuItem fx:id="miVersion1" mnemonicParsing="false" onAction="#onVersion1Clicked" text="none" visible="false" />
+                        <MenuItem fx:id="miVersion2" mnemonicParsing="false" onAction="#onVersion2Clicked" text="none" visible="false" />
+                        <MenuItem fx:id="miVersion3" mnemonicParsing="false" onAction="#onVersion3Clicked" text="none" visible="false" />
+                     </items></Menu>
+                  <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+                    <items>
+                      	<MenuItem fx:id="imRedo" mnemonicParsing="false" onAction="#onRedoClicked" text="Redo" />
+                        <MenuItem fx:id="imUndo" mnemonicParsing="false" onAction="#onUndoClicked" text="Undo" />
+                    </items>
+                  </Menu>
+              </menus>
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </MenuBar>
+            <ComboBox fx:id="cbLanguageChooser" layoutX="640.0" layoutY="66.0" prefWidth="150.0" promptText="choose one" visibleRowCount="2" />
+            <TextArea fx:id="taOutput" layoutX="451.0" layoutY="308.0" prefHeight="83.0" prefWidth="340.0" scrollLeft="80.0" wrapText="true">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </TextArea>
+            <TextArea fx:id="taCode" layoutX="49.0" layoutY="123.0" onKeyPressed="#onCodePressed" prefHeight="121.0" prefWidth="742.0" promptText="Code" scrollLeft="80.0" wrapText="true">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TextArea>
+            <TextArea fx:id="taInput" layoutX="49.0" layoutY="308.0" prefHeight="83.0" prefWidth="340.0" promptText="Data" scrollLeft="80.0" wrapText="true">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="btLogout" layoutX="449.0" layoutY="494.0" mnemonicParsing="false" onAction="#onLogoutClicked" prefHeight="55.0" prefWidth="172.0" text="Log out">
+               <font>
+                  <Font name="Sitka Heading" size="30.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="ivLoginIcon" fitHeight="121.0" fitWidth="173.0" layoutX="669.0" layoutY="433.0" onMouseClicked="#onUserIconClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblUser" alignment="CENTER" layoutX="451.0" layoutY="427.0" prefHeight="48.0" prefWidth="172.0">
+               <font>
+                  <Font name="Serif Bold Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblEnterCode" layoutX="49.0" layoutY="59.0" prefHeight="64.0" prefWidth="241.0" text="Enter your code:">
+               <font>
+                  <Font name="Lucida Fax Demibold Italic" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblInput" contentDisplay="TOP" layoutX="49.0" layoutY="244.0" prefHeight="64.0" prefWidth="160.0" text="Input:">
+               <font>
+                  <Font name="Lucida Fax Demibold Italic" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOutput" layoutX="451.0" layoutY="244.0" prefHeight="64.0" prefWidth="112.0" text="Output:">
+               <font>
+                  <Font name="Lucida Fax Demibold Italic" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblChooseLanguage" layoutX="451.0" layoutY="71.0" text="Choose the Language" />
+         </children>
+      </Pane>
+      <Pane fx:id="loginPane" prefHeight="584.0" prefWidth="840.0" visible="false">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f6ffc6" height="590.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="846.0" />
+            <ImageView fx:id="ivReturn" fitHeight="77.0" fitWidth="131.0" layoutX="33.0" layoutY="493.0" onMouseClicked="#onReturnClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@timg.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="247.0" layoutY="46.0" prefHeight="83.0" prefWidth="326.0" text="User Login">
+               <effect>
+                  <InnerShadow height="50.0" offsetX="10.0" offsetY="10.0" radius="17.25" />
+               </effect>
+               <font>
+                  <Font name="Segoe Print Bold" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="180.0" prefHeight="20.0" prefWidth="172.0" text="Name" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="265.0" prefHeight="64.0" prefWidth="172.0" text="Password" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="pfPassword" layoutX="425.0" layoutY="268.0" prefHeight="57.0" prefWidth="295.0" />
+            <TextField fx:id="tfUserName" layoutX="425.0" layoutY="168.0" prefHeight="57.0" prefWidth="295.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btLogin" layoutX="170.0" layoutY="375.0" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="77.0" prefWidth="207.0" text="Log in">
+               <font>
+                  <Font name="Lucida Handwriting Italic" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btRegister" layoutX="513.0" layoutY="375.0" mnemonicParsing="false" onAction="#onRegisterClicked" prefHeight="77.0" prefWidth="207.0" text="Register">
+               <font>
+                  <Font name="Lucida Handwriting Italic" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
